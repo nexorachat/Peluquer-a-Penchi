@@ -1,0 +1,629 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#171415">
+<meta name="description" content="Peluquería Penchi en Roldán, Murcia. Cuida tu cabello y solicita tu cita previa por WhatsApp.">
+<title>Peluquería Penchi | Roldán</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#171415;
+  --panel:#211c1d;
+  --text:#f5eee8;
+  --muted:#b8adaa;
+  --accent:#d3a39a;
+  --line:#403638;
+  --green:#8ed6a5;
+  --red:#f2a39d;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth;scroll-padding-top:90px}
+body {
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:"DM Sans",sans-serif;line-height:1.65;
+}
+a {color:inherit;text-decoration:none}
+button,input,select,textarea {font:inherit}
+button,a { -webkit-tap-highlight-color:transparent }
+.wrap {width:min(1120px,90%);margin:auto}
+section {scroll-margin-top:85px}
+.announcement {
+  display:flex;justify-content:center;align-items:center;gap:9px;
+  padding:8px 12px;background:#0e0c0d;color:#c9bfbb;
+  font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+}
+.dot {width:8px;height:8px;border-radius:50%;background:#999;flex-shrink:0}
+.dot.open {background:var(--green)}
+.dot.closed {background:var(--red)}
+header {
+  position:sticky;top:0;z-index:20;background:#171415f5;
+  border-bottom:1px solid #ffffff15;backdrop-filter:blur(15px);
+}
+.header-inner {
+  width:min(1120px,90%);margin:auto;min-height:83px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.brand {display:flex;flex-direction:column;line-height:1}
+.brand strong {font:700 29px "Playfair Display",serif;letter-spacing:.08em}
+.brand strong span {color:var(--accent)}
+.brand small {margin-top:7px;color:var(--muted);font-size:9px;letter-spacing:.3em}
+nav {display:flex;align-items:center;gap:24px;font-size:12px}
+nav a:hover,.text-link:hover {color:var(--accent)}
+.nav-cta {border:1px solid var(--accent);padding:11px 15px;color:var(--accent)}
+.menu {display:none;background:none;color:white;border:0;font-size:27px;cursor:pointer}
+.hero {
+  min-height:590px;padding-top:75px;padding-bottom:80px;
+  display:grid;grid-template-columns:1fr .85fr;gap:6%;align-items:center;
+}
+.eyebrow {font-size:10px;letter-spacing:.2em;color:var(--accent);font-weight:700}
+h1,h2,h3 {font-family:"Playfair Display",Georgia,serif;font-weight:500;line-height:1.12}
+h1 {font-size:clamp(55px,7vw,88px);letter-spacing:-.05em;margin:22px 0}
+h1 em,h2 em {color:var(--accent);font-weight:500}
+h2 {font-size:clamp(38px,5vw,58px);letter-spacing:-.035em;margin:15px 0 22px}
+.intro {max-width:450px;color:var(--muted);font-size:14px}
+.actions {display:flex;align-items:center;flex-wrap:wrap;gap:22px;margin-top:28px}
+.btn {
+  display:inline-flex;justify-content:center;align-items:center;gap:10px;
+  padding:14px 20px;border:1px solid transparent;
+  font-size:12px;font-weight:700;cursor:pointer;transition:.2s;
+}
+.btn:hover {transform:translateY(-2px)}
+.primary {background:var(--accent);color:#201819}
+.primary:hover {background:#e4b8ae}
+.outline {border-color:var(--accent);color:var(--accent)}
+.text-link {font-size:12px;font-weight:600}
+.text-link span {color:var(--accent)}
+.hero-note {font-size:10px;color:var(--muted);margin-top:45px}
+.hero-art {
+  min-height:410px;position:relative;overflow:hidden;
+  display:grid;place-items:center;
+  background:radial-gradient(ellipse at center,#50343a,#292123 48%,#1b1718 80%);
+  border:1px solid #ffffff12;
+}
+.orbit {position:absolute;width:330px;height:330px;border:1px solid #d3a39a40;border-radius:50%}
+.orbit.two {width:430px;height:430px}
+.sun {position:absolute;width:65px;height:65px;background:var(--accent);border-radius:50%;right:13%;top:13%}
+.art-card {
+  position:relative;width:72%;min-height:285px;padding:23px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  background:linear-gradient(145deg,#302326ed,#191516ed);
+  border:1px solid #d3a39a80;transform:rotate(-4deg);
+  box-shadow:0 25px 70px #0006;
+}
+.art-small {font-size:9px;letter-spacing:.17em;color:#c9b9b5}
+.art-large {font:500 clamp(65px,8vw,100px)/.86 "Playfair Display",serif;letter-spacing:-.08em}
+.art-large em {color:var(--accent)}
+.art-bottom {align-self:flex-end}
+.ticker {overflow:hidden;background:#211b1d;border-block:1px solid var(--line)}
+.ticker-inner {
+  display:flex;justify-content:space-around;align-items:center;gap:24px;
+  min-width:650px;padding:18px 0;font-size:10px;letter-spacing:.18em;
+}
+.ticker b {color:var(--accent)}
+.section {padding-top:90px;padding-bottom:90px}
+.heading {
+  display:flex;align-items:end;justify-content:space-between;
+  gap:30px;margin-bottom:38px;
+}
+.heading h2 {margin-bottom:0}
+.muted {max-width:370px;color:var(--muted);font-size:13px}
+.services-grid {display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.service {
+  display:grid;grid-template-columns:35px 1fr 20px;gap:14px;
+  align-items:start;padding:25px 12px 25px 0;border-bottom:1px solid var(--line);
+}
+.service:nth-child(even) {padding-left:22px;border-left:1px solid var(--line)}
+.number {color:var(--accent);font-size:11px}
+.service h3 {font-size:23px;margin:0 0 8px}
+.service p {color:var(--muted);font-size:12px;margin:0}
+.arrow {color:var(--accent)}
+.small-note {font-size:10px;color:#938986;margin-top:18px}
+.about {
+  padding:80px max(5%,calc((100% - 1120px)/2));
+  display:grid;grid-template-columns:.8fr 1fr;align-items:center;gap:9%;
+  background:#211b1d;
+}
+.about-art {
+  min-height:300px;display:grid;place-items:center;position:relative;
+  background:radial-gradient(circle,#51363b,#302427 50%,#211b1d 78%);
+  border:1px solid #d3a39a32;
+}
+.about-art span {font:190px/1 "Playfair Display",serif;color:var(--accent)}
+.about-art b {position:absolute;right:20%;top:20%;font-size:30px;color:var(--accent)}
+.about-copy p:not(.eyebrow) {color:var(--muted);font-size:14px;margin-bottom:24px}
+.booking {display:grid;grid-template-columns:.8fr 1fr;gap:8%;align-items:start}
+.booking-copy>p:not(.eyebrow) {color:var(--muted);font-size:13px}
+.note {border:1px solid var(--line);padding:16px;margin-top:30px;color:#c5b9b5;font-size:12px}
+.current-status {display:flex;align-items:center;gap:10px;margin-top:25px;font-size:12px}
+.current-status small {display:block;color:var(--muted);font-size:10px}
+.form {
+  background:var(--panel);padding:clamp(20px,4vw,36px);
+  border:1px solid #ffffff12;
+}
+.form-head {
+  display:flex;justify-content:space-between;padding-bottom:18px;
+  margin-bottom:20px;border-bottom:1px solid var(--line);
+  color:var(--accent);font-size:9px;letter-spacing:.15em;
+}
+.form label {display:block;font-size:11px;font-weight:600;margin-bottom:16px}
+.form input:not([type=checkbox]),.form select,.form textarea {
+  display:block;width:100%;margin-top:7px;padding:12px;
+  background:#171415;color:var(--text);border:1px solid #4a3c3e;
+  border-radius:0;outline:none;font-size:12px;
+}
+.form input:focus,.form select:focus,.form textarea:focus {border-color:var(--accent)}
+.form input::placeholder,.form textarea::placeholder {color:#817775}
+.form textarea {resize:vertical}
+.fields {display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.consent {display:flex!important;gap:9px;align-items:flex-start;color:var(--muted);font-weight:400!important;font-size:10px!important;line-height:1.5}
+.consent input {margin-top:3px;accent-color:var(--accent)}
+.full {width:100%}
+.disclaimer {font-size:10px;color:var(--muted);margin:12px 0 0}
+#feedback {font-size:12px;color:var(--accent)}
+.gallery-grid {display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px}
+.photo-slot {
+  min-height:175px;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:8px;text-align:center;
+  background:linear-gradient(145deg,#292223,#201a1b);
+  border:1px dashed #6a5153;color:var(--accent);
+  font-size:10px;letter-spacing:.12em;
+}
+.photo-slot.main {grid-row:span 2;min-height:365px}
+.photo-slot .plus {font-size:28px;color:#d3a39a80}
+.photo-slot small {color:var(--muted);font-size:10px;letter-spacing:0}
+.reviews {padding:80px max(5%,calc((100% - 1120px)/2));background:#211b1d;display:grid;grid-template-columns:1fr .7fr;gap:8%;align-items:center}
+.rating {display:flex;align-items:center;gap:16px;margin:22px 0}
+.rating strong {font:55px "Playfair Display",serif}
+.stars {color:var(--accent);letter-spacing:.12em}
+.review-box {
+  min-height:260px;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;border:1px solid #d3a39a42;
+  background:radial-gradient(circle,#443035,#211b1d 75%);
+}
+.review-box .quote {font:85px/.8 Georgia;color:var(--accent)}
+.review-box p {font:23px/1.3 "Playfair Display",serif;letter-spacing:.07em}
+.contact-grid {display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}
+.contact-card {padding:23px;border-right:1px solid var(--line)}
+.contact-card:last-child {border:0}
+.contact-icon {font-size:24px;color:var(--accent)}
+.contact-label {display:block;font-size:9px;letter-spacing:.13em;color:var(--accent);margin:17px 0 10px}
+.contact-card strong {font:19px "Playfair Display",serif}
+.contact-card p {font-size:12px;color:var(--muted);margin:7px 0 15px}
+.contact-card>a {font-size:11px;color:var(--accent)}
+.hours {display:grid;grid-template-columns:repeat(4,1fr);margin-top:25px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.hours div {display:flex;justify-content:space-between;gap:8px;padding:13px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-size:11px}
+.hours span {color:var(--muted)}
+.hours strong {font-weight:500}
+footer {padding:32px 5%;background:#100e0f;border-top:1px solid var(--line);text-align:center}
+footer .brand {align-items:center}
+footer p {font:italic 14px "Playfair Display",serif;color:var(--muted)}
+footer small {font-size:10px;color:#817775}
+.wa-float {
+  position:fixed;z-index:30;right:18px;bottom:18px;
+  display:flex;align-items:center;gap:9px;padding:13px 17px;
+  background:#d3a39a;color:#201819;font-size:11px;font-weight:700;
+  box-shadow:0 8px 30px #0006;
+}
+.wa-float:hover {background:#e4b8ae}
+:focus-visible {outline:2px solid var(--accent);outline-offset:4px}
+
+@media(max-width:800px) {
+  .menu {display:block}
+  nav {
+    display:none;position:absolute;top:100%;left:0;right:0;
+    padding:22px 5%;background:#171415;border-bottom:1px solid var(--line);
+    flex-direction:column;align-items:stretch;gap:15px;
+  }
+  nav.show {display:flex}
+  .nav-cta {text-align:center}
+  .hero {grid-template-columns:1fr;gap:35px;padding-top:55px;padding-bottom:60px}
+  .hero-art {min-height:340px}
+  .section {padding-top:70px;padding-bottom:70px}
+  .heading {align-items:start;flex-direction:column;gap:15px}
+  .about {grid-template-columns:1fr;gap:30px;padding:65px 5%}
+  .about-art {min-height:240px}
+  .about-art span {font-size:150px}
+  .booking {grid-template-columns:1fr;gap:30px}
+  .reviews {grid-template-columns:1fr;gap:30px;padding:65px 5%}
+  .contact-grid {grid-template-columns:1fr}
+  .contact-card {border-right:0;border-bottom:1px solid var(--line)}
+  .contact-card:last-child {border-bottom:0}
+  .contact-icon {display:block}
+  .hours {grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px) {
+  .announcement {font-size:9px}
+  h1 {font-size:57px}
+  h2 {font-size:40px}
+  .hero-art {min-height:290px}
+  .art-card {min-height:225px;width:76%;padding:18px}
+  .art-large {font-size:70px}
+  .services-grid {grid-template-columns:1fr}
+  .service:nth-child(even) {padding-left:0;border-left:0}
+  .fields {grid-template-columns:1fr;gap:0}
+  .gallery-grid {grid-template-columns:1fr 1fr}
+  .photo-slot.main {grid-column:1/-1;grid-row:auto;min-height:240px}
+  .photo-slot {min-height:145px}
+  .hours {grid-template-columns:1fr}
+  .wa-float {right:12px;bottom:12px;padding:12px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce) {
+  html {scroll-behavior:auto}
+  *,*::before,*::after {transition:none!important;animation:none!important}
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+  <span class="dot" id="top-dot"></span>
+  <span id="top-status" aria-live="polite">Consultando horario...</span>
+  <span>· Roldán, Murcia</span>
+</div>
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="#inicio" aria-label="Peluquería Penchi, inicio">
+      <strong>PENCHI<span>.</span></strong>
+      <small>PELUQUERÍA</small>
+    </a>
+
+    <button class="menu" id="menu-toggle" aria-label="Abrir menú"
+      aria-expanded="false" aria-controls="navigation">☰</button>
+
+    <nav id="navigation">
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotras">Nosotras</a>
+      <a href="#local">Nuestro local</a>
+      <a href="#contacto">Contacto</a>
+      <a class="nav-cta" href="#cita">Pedir cita ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero wrap" id="inicio">
+  <div>
+    <p class="eyebrow">✳ TU CABELLO, TU ESENCIA</p>
+    <h1>Tu belleza.<br><em>Tus reglas.</em></h1>
+    <p class="intro">
+      Un momento para ti, para cuidarte y para llevar tu estilo como te gusta.
+      Te esperamos en Peluquería Penchi, en Roldán.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="#cita">Solicitar cita ↗</a>
+      <a class="text-link" href="#servicios">Descubrir servicios ↓</a>
+    </div>
+    <p class="hero-note">✳ Atención cercana · Cuidado personal · Tu estilo</p>
+  </div>
+
+  <div class="hero-art" aria-label="Diseño gráfico de estilo editorial">
+    <div class="orbit"></div><div class="orbit two"></div><div class="sun"></div>
+    <div class="art-card">
+      <span class="art-small">PENCHI / ROLDÁN</span>
+      <span class="art-large">BE<br><em>YOU.</em></span>
+      <span class="art-small">BELLEZA CON PERSONALIDAD</span>
+      <span class="art-small art-bottom">01 — PENCHI</span>
+    </div>
+  </div>
+</section>
+
+<div class="ticker"><div class="ticker-inner">
+  <span>CUIDADO</span><b>✳</b><span>ESTILO</span><b>✳</b>
+  <span>PERSONALIDAD</span><b>✳</b><span>UN MOMENTO PARA TI</span><b>✳</b>
+</div></div>
+
+<section class="section wrap" id="servicios">
+  <div class="heading">
+    <div><p class="eyebrow">01 / SERVICIOS</p><h2>Tu cabello,<br><em>en buenas manos.</em></h2></div>
+    <p class="muted">Cada cabello tiene su personalidad. Cuéntanos qué te gustaría hacer y te ayudaremos a encontrar la mejor opción para ti.</p>
+  </div>
+
+  <div class="services-grid">
+    <article class="service"><span class="number">01</span><div><h3>Corte y estilo</h3><p>Un corte que encaje contigo y con tu forma de llevar el cabello.</p></div><span class="arrow">↗</span></article>
+    <article class="service"><span class="number">02</span><div><h3>Coloración</h3><p>Consulta opciones de color y encuentra el tono que buscas.</p></div><span class="arrow">↗</span></article>
+    <article class="service"><span class="number">03</span><div><h3>Mechas y reflejos</h3><p>Ilumina tu look y cuéntanos la idea que tienes en mente.</p></div><span class="arrow">↗</span></article>
+    <article class="service"><span class="number">04</span><div><h3>Peinados</h3><p>Un acabado cuidado para tu día a día o una ocasión especial.</p></div><span class="arrow">↗</span></article>
+  </div>
+  <p class="small-note">Servicios orientativos. Consulta disponibilidad y precios directamente con la peluquería.</p>
+</section>
+
+<section class="about" id="nosotras">
+  <div class="about-art" aria-hidden="true"><span>P</span><b>✳</b></div>
+  <div class="about-copy">
+    <p class="eyebrow">02 / UN ESPACIO PARA TI</p>
+    <h2>Sentirte bien<br>también <em>es cuidarte.</em></h2>
+    <p>En Peluquería Penchi queremos que tu visita sea un momento para ti. Cuéntanos qué buscas, qué estilo te gusta y qué te gustaría cambiar. Hablaremos contigo para orientar tu cita.</p>
+    <a class="text-link" href="#cita">Hablemos de tu próxima cita ↗</a>
+  </div>
+</section>
+
+<section class="section wrap" id="cita">
+  <div class="booking">
+    <div class="booking-copy">
+      <p class="eyebrow">03 / RESERVAS</p>
+      <h2>Tu próxima cita<br>empieza <em>aquí.</em></h2>
+      <p>Rellena el formulario y prepara tu solicitud en WhatsApp. La cita quedará pendiente hasta que la peluquería confirme la disponibilidad.</p>
+      <div class="note">✳ ¿No sabes qué servicio elegir? Selecciona «Quiero asesoramiento» y explícanos qué necesitas.</div>
+      <div class="current-status"><span class="dot" id="booking-dot"></span><div><strong id="booking-status">Consultando horario...</strong><small>Martes a sábado · 09:00–20:00</small></div></div>
+    </div>
+
+    <form class="form" id="booking-form">
+      <div class="form-head"><span>FORMULARIO DE CITA</span><span>PENCHI / 01</span></div>
+
+      <div class="fields">
+        <label>Nombre y apellidos
+          <input name="name" autocomplete="name" placeholder="¿Cómo te llamas?" required maxlength="100">
+        </label>
+        <label>Teléfono de contacto
+          <input name="phone" autocomplete="tel" type="tel" placeholder="Tu teléfono" required maxlength="25">
+        </label>
+      </div>
+
+      <label>Servicio
+        <select name="service" required>
+          <option value="">Selecciona un servicio</option>
+          <option>Corte de pelo</option>
+          <option>Coloración</option>
+          <option>Mechas y reflejos</option>
+          <option>Peinado</option>
+          <option>Tratamiento capilar</option>
+          <option>Quiero asesoramiento</option>
+          <option>Otro servicio</option>
+        </select>
+      </label>
+
+      <div class="fields">
+        <label>Fecha preferida
+          <input type="date" name="date" id="booking-date" required>
+        </label>
+        <label>Hora preferida
+          <select name="time" required>
+            <option value="">Elige una franja</option>
+            <option>09:00–11:00</option>
+            <option>11:00–13:00</option>
+            <option>13:00–15:00</option>
+            <option>15:00–17:00</option>
+            <option>17:00–20:00</option>
+            <option>Me adapto</option>
+          </select>
+        </label>
+      </div>
+
+      <label>Cuéntanos algo más (opcional)
+        <textarea name="notes" rows="3" maxlength="700" placeholder="Ideas, preferencias o detalles que debamos saber..."></textarea>
+      </label>
+
+      <label class="consent">
+        <input type="checkbox" name="consent" required>
+        <span>Acepto que los datos introducidos se incluyan en el mensaje de WhatsApp que enviaré para gestionar mi solicitud de cita.</span>
+      </label>
+
+      <button class="btn primary full" type="submit">Continuar en WhatsApp ↗</button>
+      <p class="disclaimer">WhatsApp se abrirá con el mensaje preparado. Tendrás que pulsar «Enviar». La cita no estará confirmada hasta recibir respuesta de la peluquería.</p>
+      <p id="feedback" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<section class="section wrap" id="local">
+  <div class="heading">
+    <div><p class="eyebrow">04 / NUESTRO ESPACIO</p><h2>Conoce <em>Penchi.</em></h2></div>
+    <p class="muted">Estamos preparando esta galería para enseñarte nuestro salón. Pronto podrás descubrir el espacio en fotografías reales.</p>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="photo-slot main"><span class="plus">＋</span><span>FOTO 01</span><small>Vista general del salón</small></div>
+    <div class="photo-slot"><span class="plus">＋</span><span>FOTO 02</span><small>Zona de trabajo</small></div>
+    <div class="photo-slot"><span class="plus">＋</span><span>FOTO 03</span><small>Detalles del interior</small></div>
+    <div class="photo-slot"><span class="plus">＋</span><span>FOTO 04</span><small>Productos y herramientas</small></div>
+    <div class="photo-slot"><span class="plus">＋</span><span>FOTO 05</span><small>Un rincón de Penchi</small></div>
+  </div>
+  <p class="small-note">Espacios reservados para añadir las fotografías reales del local más adelante.</p>
+</section>
+
+<section class="reviews">
+  <div>
+    <p class="eyebrow">05 / OPINIONES</p>
+    <div class="rating"><strong>4,5</strong><span class="stars">★★★★★</span></div>
+    <h2>La confianza se<br>construye <em>cita a cita.</em></h2>
+    <p class="muted">La información de Google facilitada muestra una valoración de 4,5 sobre 5 basada en 11 reseñas.</p>
+    <a class="btn outline" href="https://www.google.es/maps/place/Peluqueria+Penchi/" target="_blank" rel="noopener noreferrer">Ver opiniones en Google ↗</a>
+  </div>
+  <div class="review-box"><span class="quote">“</span><p>GRACIAS POR<br>CONFIAR EN<br>PENCHI.</p><span>✳</span></div>
+</section>
+
+<section class="section wrap" id="contacto">
+  <div class="heading">
+    <div><p class="eyebrow">06 / CONTACTO</p><h2>Nos vemos <em>pronto.</em></h2></div>
+    <a class="text-link" href="https://www.google.es/maps/place/Peluqueria+Penchi/" target="_blank" rel="noopener noreferrer">Cómo llegar ↗</a>
+  </div>
+
+  <div class="contact-grid">
+    <article class="contact-card">
+      <span class="contact-icon">⌖</span><span class="contact-label">DÓNDE ESTAMOS</span>
+      <strong>C. Carrascoy, 13</strong><p>30709 Roldán, Murcia</p>
+      <a href="https://www.google.es/maps/place/Peluqueria+Penchi/" target="_blank" rel="noopener noreferrer">Abrir mapa ↗</a>
+    </article>
+    <article class="contact-card">
+      <span class="contact-icon">◷</span><span class="contact-label">HORARIO HABITUAL</span>
+      <strong>09:00–20:00</strong><p>De martes a sábado</p>
+      <a href="#horario">Ver horario completo ↓</a>
+    </article>
+    <article class="contact-card">
+      <span class="contact-icon">↗</span><span class="contact-label">CITA PREVIA</span>
+      <strong>Hablemos por WhatsApp</strong><p>Solicita tu día y hora preferidos.</p>
+      <a href="https://wa.me/34686907120?text=Hola%20Peluquer%C3%ADa%20Penchi%2C%20me%20gustar%C3%ADa%20pedir%20cita." target="_blank" rel="noopener noreferrer">Abrir WhatsApp ↗</a>
+    </article>
+  </div>
+
+  <div class="hours" id="horario">
+    <div><span>Lunes</span><strong>Cerrado</strong></div>
+    <div><span>Martes</span><strong>09:00–20:00</strong></div>
+    <div><span>Miércoles</span><strong>09:00–20:00</strong></div>
+    <div><span>Jueves</span><strong>09:00–20:00</strong></div>
+    <div><span>Viernes</span><strong>09:00–20:00</strong></div>
+    <div><span>Sábado</span><strong>09:00–20:00</strong></div>
+    <div><span>Domingo</span><strong>Cerrado</strong></div>
+  </div>
+  <p class="small-note">Horario según los datos facilitados. Confirma festivos y posibles cambios antes de publicar la web.</p>
+</section>
+</main>
+
+<footer>
+  <a class="brand" href="#inicio"><strong>PENCHI<span style="color:#d3a39a">.</span></strong><small>PELUQUERÍA</small></a>
+  <p>Tu cabello. Tu esencia.</p>
+  <small>© <span id="year"></span> Peluquería Penchi · Roldán, Murcia</small>
+</footer>
+
+<a class="wa-float" href="https://wa.me/34686907120?text=Hola%20Peluquer%C3%ADa%20Penchi%2C%20me%20gustar%C3%ADa%20pedir%20cita." target="_blank" rel="noopener noreferrer">◉ Reservar por WhatsApp</a>
+
+<script>
+"use strict";
+
+const WHATSAPP = "34686907120";
+
+const menuButton = document.getElementById("menu-toggle");
+const navigation = document.getElementById("navigation");
+
+menuButton.addEventListener("click", () => {
+  const open = navigation.classList.toggle("show");
+  menuButton.setAttribute("aria-expanded", String(open));
+  menuButton.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  menuButton.textContent = open ? "✕" : "☰";
+});
+
+navigation.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navigation.classList.remove("show");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.textContent = "☰";
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* Horario local: martes a sábado, de 09:00 a 20:00.
+   Usa la hora local del dispositivo de la persona visitante. */
+function updateOpeningStatus() {
+  const now = new Date();
+  const day = now.getDay();
+  const minutes = now.getHours() * 60 + now.getMinutes();
+
+  const workingDay = day >= 2 && day <= 6;
+  const open = workingDay && minutes >= 540 && minutes < 1200;
+
+  let message;
+
+  if (open) {
+    message = "Abierto ahora · Cerramos a las 20:00";
+  } else if (workingDay && minutes < 540) {
+    message = "Cerrado ahora · Abrimos a las 09:00";
+  } else if (workingDay && minutes >= 1200) {
+    message = "Cerrado ahora · Abrimos mañana a las 09:00";
+  } else if (day === 1) {
+    message = "Cerrado hoy · Abrimos el martes a las 09:00";
+  } else {
+    message = "Cerrado hoy · Abrimos el martes a las 09:00";
+  }
+
+  document.getElementById("top-status").textContent = message;
+  document.getElementById("booking-status").textContent =
+    open ? "El salón está abierto ahora" : "El salón está cerrado ahora";
+
+  ["top-dot", "booking-dot"].forEach(id => {
+    const dot = document.getElementById(id);
+    dot.classList.toggle("open", open);
+    dot.classList.toggle("closed", !open);
+  });
+}
+
+updateOpeningStatus();
+setInterval(updateOpeningStatus, 60000);
+
+/* Impide seleccionar fechas anteriores a hoy. */
+const dateInput = document.getElementById("booking-date");
+
+function localDateString(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+dateInput.min = localDateString(new Date());
+
+/* El formulario prepara una solicitud. No confirma automáticamente
+   una reserva ni comprueba la disponibilidad real del salón. */
+document.getElementById("booking-form").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const feedback = document.getElementById("feedback");
+
+  if (!form.reportValidity()) return;
+
+  const data = new FormData(form);
+  const chosenDate = data.get("date");
+  const dateParts = chosenDate.split("-").map(Number);
+  const dateObject = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+  const day = dateObject.getDay();
+
+  if (chosenDate < localDateString(new Date())) {
+    feedback.textContent = "Elige una fecha igual o posterior a hoy.";
+    return;
+  }
+
+  if (day === 0 || day === 1) {
+    feedback.textContent = "El salón figura cerrado los domingos y lunes. Elige otro día.";
+    return;
+  }
+
+  const formattedDate = new Intl.DateTimeFormat("es-ES", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  }).format(dateObject);
+
+  const message = [
+    "Hola, Peluquería Penchi. Me gustaría solicitar una cita.",
+    "",
+    "Nombre: " + data.get("name").trim(),
+    "Teléfono: " + data.get("phone").trim(),
+    "Servicio: " + data.get("service"),
+    "Fecha preferida: " + formattedDate,
+    "Hora preferida: " + data.get("time"),
+    data.get("notes").trim()
+      ? "Detalles: " + data.get("notes").trim()
+      : "",
+    "",
+    "Entiendo que la cita queda pendiente de confirmación."
+  ].filter(Boolean).join("\n");
+
+  const url = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(message);
+  const popup = window.open(url, "_blank", "noopener,noreferrer");
+
+  if (!popup) {
+    feedback.textContent = "Si WhatsApp no se ha abierto, pulsa aquí para continuar.";
+    const link = document.createElement("a");
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = " Abrir WhatsApp ↗";
+    feedback.appendChild(link);
+  } else {
+    feedback.textContent = "Solicitud preparada. Pulsa Enviar en WhatsApp para mandarla a Penchi.";
+  }
+});
+</script>
+</body>
+</html>
+```
